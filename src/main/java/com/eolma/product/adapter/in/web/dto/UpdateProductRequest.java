@@ -20,6 +20,7 @@ public record UpdateProductRequest(
         Long reservePrice,
         @NotNull @Positive Long minBidUnit,
         @NotNull EndType endType,
-        @NotBlank String endValue,
+        @Positive Integer durationHours,
+        @Positive Integer maxBidCount,
         List<String> imageUrls
 ) {}

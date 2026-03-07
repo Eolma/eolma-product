@@ -26,7 +26,8 @@ public class RegisterProductUseCase {
                 .reservePrice(request.reservePrice())
                 .minBidUnit(request.minBidUnit())
                 .endType(request.endType())
-                .endValue(request.endValue())
+                .durationHours(request.durationHours())
+                .maxBidCount(request.maxBidCount())
                 .imageUrls(request.imageUrls())
                 .build();
 

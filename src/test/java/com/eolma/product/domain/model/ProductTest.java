@@ -20,7 +20,7 @@ class ProductTest {
                 .startingPrice(100000L)
                 .minBidUnit(1000L)
                 .endType(EndType.TIME)
-                .endValue("24h")
+                .durationHours(24)
                 .build();
     }
 
@@ -150,7 +150,7 @@ class ProductTest {
                 .startingPrice(100000L)
                 .minBidUnit(null)
                 .endType(EndType.TIME)
-                .endValue("24h")
+                .durationHours(24)
                 .build();
 
         assertThat(product.getMinBidUnit()).isEqualTo(1000L);

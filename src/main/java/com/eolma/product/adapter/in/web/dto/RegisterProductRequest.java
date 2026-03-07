@@ -20,6 +20,7 @@ public record RegisterProductRequest(
         Long reservePrice,
         Long minBidUnit,
         @NotNull EndType endType,
-        @NotBlank String endValue,
+        @Positive Integer durationHours,
+        @Positive Integer maxBidCount,
         List<String> imageUrls
 ) {}

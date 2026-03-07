@@ -56,8 +56,11 @@ public class Product {
     @Column(name = "end_type", nullable = false, length = 20)
     private EndType endType;
 
-    @Column(name = "end_value", nullable = false, length = 50)
-    private String endValue;
+    @Column(name = "duration_hours")
+    private Integer durationHours;
+
+    @Column(name = "max_bid_count")
+    private Integer maxBidCount;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
@@ -76,7 +79,8 @@ public class Product {
     @Builder
     public Product(Long sellerId, String title, String description, Category category,
                    ConditionGrade conditionGrade, Long startingPrice, Long instantPrice,
-                   Long reservePrice, Long minBidUnit, EndType endType, String endValue,
+                   Long reservePrice, Long minBidUnit, EndType endType,
+                   Integer durationHours, Integer maxBidCount,
                    List<String> imageUrls) {
         this.sellerId = sellerId;
         this.title = title;
@@ -88,7 +92,8 @@ public class Product {
         this.reservePrice = reservePrice;
         this.minBidUnit = minBidUnit != null ? minBidUnit : 1000L;
         this.endType = endType;
-        this.endValue = endValue;
+        this.durationHours = durationHours;
+        this.maxBidCount = maxBidCount;
         this.status = ProductStatus.DRAFT;
         this.imageUrls = imageUrls;
         this.createdAt = LocalDateTime.now();
@@ -97,7 +102,8 @@ public class Product {
 
     public void update(String title, String description, Category category,
                        ConditionGrade conditionGrade, Long startingPrice, Long instantPrice,
-                       Long reservePrice, Long minBidUnit, EndType endType, String endValue,
+                       Long reservePrice, Long minBidUnit, EndType endType,
+                       Integer durationHours, Integer maxBidCount,
                        List<String> imageUrls) {
         validateModifiable();
         this.title = title;
@@ -109,7 +115,8 @@ public class Product {
         this.reservePrice = reservePrice;
         this.minBidUnit = minBidUnit;
         this.endType = endType;
-        this.endValue = endValue;
+        this.durationHours = durationHours;
+        this.maxBidCount = maxBidCount;
         this.imageUrls = imageUrls;
         this.updatedAt = LocalDateTime.now();
     }

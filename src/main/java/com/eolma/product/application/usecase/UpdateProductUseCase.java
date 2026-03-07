@@ -28,7 +28,8 @@ public class UpdateProductUseCase {
                 request.reservePrice(),
                 request.minBidUnit(),
                 request.endType(),
-                request.endValue(),
+                request.durationHours(),
+                request.maxBidCount(),
                 request.imageUrls()
         );
         Product saved = productService.save(product);

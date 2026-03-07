@@ -40,7 +40,8 @@ public class ActivateProductUseCase {
                 product.getReservePrice(),
                 product.getMinBidUnit(),
                 product.getEndType().name(),
-                product.getEndValue(),
+                product.getDurationHours(),
+                product.getMaxBidCount(),
                 product.getImageUrls()
         );
 
