@@ -14,7 +14,7 @@ public class RegisterProductUseCase {
     private final ProductService productService;
 
     @Transactional
-    public Product execute(Long sellerId, RegisterProductRequest request) {
+    public Product execute(String sellerId, RegisterProductRequest request) {
         Product product = Product.builder()
                 .sellerId(sellerId)
                 .title(request.title())

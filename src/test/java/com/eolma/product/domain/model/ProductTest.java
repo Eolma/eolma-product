@@ -13,7 +13,7 @@ class ProductTest {
 
     private Product createDraftProduct() {
         return Product.builder()
-                .sellerId(1L)
+                .sellerId("seller-1")
                 .title("Test Product")
                 .category(Category.ELECTRONICS)
                 .conditionGrade(ConditionGrade.GOOD)
@@ -99,7 +99,7 @@ class ProductTest {
         void noException_whenOwner() {
             Product product = createDraftProduct();
 
-            product.validateOwnership(1L);
+            product.validateOwnership("seller-1");
         }
 
         @Test
@@ -107,7 +107,7 @@ class ProductTest {
         void throwForbidden_whenNotOwner() {
             Product product = createDraftProduct();
 
-            assertThatThrownBy(() -> product.validateOwnership(999L))
+            assertThatThrownBy(() -> product.validateOwnership("other-seller"))
                     .isInstanceOf(EolmaException.class)
                     .satisfies(ex -> assertThat(((EolmaException) ex).getErrorType())
                             .isEqualTo(ErrorType.FORBIDDEN));
@@ -143,7 +143,7 @@ class ProductTest {
     @DisplayName("minBidUnit이 null이면 기본값 1000이 설정된다")
     void defaultMinBidUnit() {
         Product product = Product.builder()
-                .sellerId(1L)
+                .sellerId("seller-1")
                 .title("Test")
                 .category(Category.ELECTRONICS)
                 .conditionGrade(ConditionGrade.GOOD)

@@ -22,7 +22,7 @@ public class CancelProductUseCase {
     private final EventPublisher eventPublisher;
 
     @Transactional
-    public void execute(Long sellerId, Long productId) {
+    public void execute(String sellerId, Long productId) {
         Product product = productService.findById(productId);
         product.validateOwnership(sellerId);
         product.cancel();

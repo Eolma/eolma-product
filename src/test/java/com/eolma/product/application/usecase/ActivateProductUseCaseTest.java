@@ -30,7 +30,7 @@ class ActivateProductUseCaseTest {
     @InjectMocks
     private ActivateProductUseCase activateProductUseCase;
 
-    private Product createDraftProduct(Long sellerId) {
+    private Product createDraftProduct(String sellerId) {
         return Product.builder()
                 .sellerId(sellerId)
                 .title("Test Product")
@@ -39,18 +39,18 @@ class ActivateProductUseCaseTest {
                 .startingPrice(100000L)
                 .minBidUnit(1000L)
                 .endType(EndType.TIME)
-                .endValue("24h")
+                .durationHours(24)
                 .build();
     }
 
     @Test
     @DisplayName("본인 DRAFT 상품을 활성화하면 이벤트가 발행된다")
     void activateProduct_publishesEvent() {
-        Product product = createDraftProduct(1L);
+        Product product = createDraftProduct("seller-1");
         given(productService.findById(1L)).willReturn(product);
         given(productService.save(any())).willReturn(product);
 
-        activateProductUseCase.execute(1L, 1L);
+        activateProductUseCase.execute("seller-1", 1L);
 
         verify(productService).save(product);
         verify(eventPublisher).publish(any());
@@ -59,10 +59,10 @@ class ActivateProductUseCaseTest {
     @Test
     @DisplayName("다른 사용자의 상품은 활성화할 수 없다")
     void cannotActivateOthersProduct() {
-        Product product = createDraftProduct(1L);
+        Product product = createDraftProduct("seller-1");
         given(productService.findById(1L)).willReturn(product);
 
-        assertThatThrownBy(() -> activateProductUseCase.execute(999L, 1L))
+        assertThatThrownBy(() -> activateProductUseCase.execute("other-seller", 1L))
                 .isInstanceOf(EolmaException.class)
                 .satisfies(ex -> {
                     EolmaException e = (EolmaException) ex;

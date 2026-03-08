@@ -41,7 +41,7 @@ public class ProductService {
         return productRepository.findAll(pageable);
     }
 
-    public Page<Product> findBySellerProducts(Long sellerId, Pageable pageable) {
+    public Page<Product> findBySellerProducts(String sellerId, Pageable pageable) {
         return productRepository.findBySellerId(sellerId, pageable);
     }
 }

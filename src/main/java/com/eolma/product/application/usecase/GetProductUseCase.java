@@ -38,7 +38,7 @@ public class GetProductUseCase {
     }
 
     @Transactional(readOnly = true)
-    public PageResponse<ProductResponse> findMyProducts(Long sellerId, Pageable pageable) {
+    public PageResponse<ProductResponse> findMyProducts(String sellerId, Pageable pageable) {
         Page<Product> page = productService.findBySellerProducts(sellerId, pageable);
         return PageResponse.of(
                 page.getContent().stream().map(ProductResponse::from).toList(),

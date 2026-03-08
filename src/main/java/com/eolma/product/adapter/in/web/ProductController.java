@@ -32,7 +32,7 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ProductResponse> register(
-            @RequestHeader("X-User-Id") Long sellerId,
+            @RequestHeader("X-User-Id") String sellerId,
             @Valid @RequestBody RegisterProductRequest request) {
         var product = registerProductUseCase.execute(sellerId, request);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -56,7 +56,7 @@ public class ProductController {
 
     @GetMapping("/me")
     public ResponseEntity<PageResponse<ProductResponse>> getMyProducts(
-            @RequestHeader("X-User-Id") Long sellerId,
+            @RequestHeader("X-User-Id") String sellerId,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         var pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
@@ -65,7 +65,7 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ProductResponse> update(
-            @RequestHeader("X-User-Id") Long sellerId,
+            @RequestHeader("X-User-Id") String sellerId,
             @PathVariable Long id,
             @Valid @RequestBody UpdateProductRequest request) {
         return ResponseEntity.ok(updateProductUseCase.execute(sellerId, id, request));
@@ -73,7 +73,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(
-            @RequestHeader("X-User-Id") Long sellerId,
+            @RequestHeader("X-User-Id") String sellerId,
             @PathVariable Long id) {
         updateProductUseCase.delete(sellerId, id);
         return ResponseEntity.noContent().build();
@@ -81,7 +81,7 @@ public class ProductController {
 
     @PostMapping("/{id}/activate")
     public ResponseEntity<Void> activate(
-            @RequestHeader("X-User-Id") Long sellerId,
+            @RequestHeader("X-User-Id") String sellerId,
             @PathVariable Long id) {
         activateProductUseCase.execute(sellerId, id);
         return ResponseEntity.ok().build();
@@ -89,7 +89,7 @@ public class ProductController {
 
     @PostMapping("/{id}/cancel")
     public ResponseEntity<Void> cancel(
-            @RequestHeader("X-User-Id") Long sellerId,
+            @RequestHeader("X-User-Id") String sellerId,
             @PathVariable Long id) {
         cancelProductUseCase.execute(sellerId, id);
         return ResponseEntity.ok().build();

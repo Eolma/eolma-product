@@ -24,7 +24,7 @@ public class Product {
     private Long id;
 
     @Column(name = "seller_id", nullable = false)
-    private Long sellerId;
+    private String sellerId;
 
     @Column(nullable = false, length = 200)
     private String title;
@@ -77,7 +77,7 @@ public class Product {
     private LocalDateTime updatedAt;
 
     @Builder
-    public Product(Long sellerId, String title, String description, Category category,
+    public Product(String sellerId, String title, String description, Category category,
                    ConditionGrade conditionGrade, Long startingPrice, Long instantPrice,
                    Long reservePrice, Long minBidUnit, EndType endType,
                    Integer durationHours, Integer maxBidCount,
@@ -144,7 +144,7 @@ public class Product {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public void validateOwnership(Long requestSellerId) {
+    public void validateOwnership(String requestSellerId) {
         if (!this.sellerId.equals(requestSellerId)) {
             throw new EolmaException(ErrorType.FORBIDDEN,
                     "You don't have permission to modify this product");
@@ -162,7 +162,7 @@ public class Product {
         return this.status == ProductStatus.DRAFT;
     }
 
-    public boolean isOwnedBy(Long sellerId) {
+    public boolean isOwnedBy(String sellerId) {
         return this.sellerId.equals(sellerId);
     }
 }

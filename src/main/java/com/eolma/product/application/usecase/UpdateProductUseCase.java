@@ -15,7 +15,7 @@ public class UpdateProductUseCase {
     private final ProductService productService;
 
     @Transactional
-    public ProductResponse execute(Long sellerId, Long productId, UpdateProductRequest request) {
+    public ProductResponse execute(String sellerId, Long productId, UpdateProductRequest request) {
         Product product = productService.findById(productId);
         product.validateOwnership(sellerId);
         product.update(
@@ -37,7 +37,7 @@ public class UpdateProductUseCase {
     }
 
     @Transactional
-    public void delete(Long sellerId, Long productId) {
+    public void delete(String sellerId, Long productId) {
         Product product = productService.findById(productId);
         product.validateOwnership(sellerId);
         product.validateModifiable();

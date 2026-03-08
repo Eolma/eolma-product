@@ -41,7 +41,7 @@ class ProductServiceTest {
 
     private Product createTestProduct() {
         return Product.builder()
-                .sellerId(1L)
+                .sellerId("seller-1")
                 .title("Test Product")
                 .description("Test Description")
                 .category(Category.ELECTRONICS)
@@ -49,7 +49,7 @@ class ProductServiceTest {
                 .startingPrice(100000L)
                 .minBidUnit(1000L)
                 .endType(EndType.TIME)
-                .endValue("24h")
+                .durationHours(24)
                 .build();
     }
 

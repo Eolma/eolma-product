@@ -22,7 +22,7 @@ public interface ProductRepository {
 
     Page<Product> findByCategoryAndStatus(Category category, ProductStatus status, Pageable pageable);
 
-    Page<Product> findBySellerId(Long sellerId, Pageable pageable);
+    Page<Product> findBySellerId(String sellerId, Pageable pageable);
 
     Page<Product> findAll(Pageable pageable);
 }

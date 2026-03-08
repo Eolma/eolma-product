@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS product (
     id              BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    seller_id       BIGINT NOT NULL,
+    seller_id       VARCHAR(36) NOT NULL,
     title           VARCHAR(200) NOT NULL,
     description     TEXT,
     category        VARCHAR(50) NOT NULL,

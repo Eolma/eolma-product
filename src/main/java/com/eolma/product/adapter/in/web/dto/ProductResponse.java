@@ -7,7 +7,7 @@ import java.util.List;
 
 public record ProductResponse(
         Long id,
-        Long sellerId,
+        String sellerId,
         String title,
         String description,
         String category,
