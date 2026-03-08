@@ -17,6 +17,7 @@ public record UpdateProductRequest(
         @NotNull ConditionGrade conditionGrade,
         @NotNull @Positive Long startingPrice,
         Long instantPrice,
+        Integer instantBuyLockPercent,
         Long reservePrice,
         @NotNull @Positive Long minBidUnit,
         @NotNull EndType endType,

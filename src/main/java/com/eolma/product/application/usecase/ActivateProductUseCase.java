@@ -37,6 +37,7 @@ public class ActivateProductUseCase {
                 product.getConditionGrade().name(),
                 product.getStartingPrice(),
                 product.getInstantPrice(),
+                product.getInstantBuyLockPercent(),
                 product.getReservePrice(),
                 product.getMinBidUnit(),
                 product.getEndType().name(),

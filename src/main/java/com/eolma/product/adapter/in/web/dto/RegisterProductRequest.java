@@ -17,6 +17,7 @@ public record RegisterProductRequest(
         @NotNull ConditionGrade conditionGrade,
         @NotNull @Positive Long startingPrice,
         Long instantPrice,
+        Integer instantBuyLockPercent,
         Long reservePrice,
         Long minBidUnit,
         @NotNull EndType endType,

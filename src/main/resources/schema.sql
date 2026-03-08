@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS product (
     condition_grade VARCHAR(20) NOT NULL,
     starting_price  BIGINT NOT NULL,
     instant_price   BIGINT,
+    instant_buy_lock_percent SMALLINT,
     reserve_price   BIGINT,
     min_bid_unit    BIGINT NOT NULL DEFAULT 1000,
     end_type        VARCHAR(20) NOT NULL,

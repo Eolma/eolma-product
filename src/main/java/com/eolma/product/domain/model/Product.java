@@ -46,6 +46,9 @@ public class Product {
     @Column(name = "instant_price")
     private Long instantPrice;
 
+    @Column(name = "instant_buy_lock_percent")
+    private Integer instantBuyLockPercent;
+
     @Column(name = "reserve_price")
     private Long reservePrice;
 
@@ -79,6 +82,7 @@ public class Product {
     @Builder
     public Product(String sellerId, String title, String description, Category category,
                    ConditionGrade conditionGrade, Long startingPrice, Long instantPrice,
+                   Integer instantBuyLockPercent,
                    Long reservePrice, Long minBidUnit, EndType endType,
                    Integer durationHours, Integer maxBidCount,
                    List<String> imageUrls) {
@@ -89,6 +93,7 @@ public class Product {
         this.conditionGrade = conditionGrade;
         this.startingPrice = startingPrice;
         this.instantPrice = instantPrice;
+        this.instantBuyLockPercent = instantBuyLockPercent;
         this.reservePrice = reservePrice;
         this.minBidUnit = minBidUnit != null ? minBidUnit : 1000L;
         this.endType = endType;
@@ -102,6 +107,7 @@ public class Product {
 
     public void update(String title, String description, Category category,
                        ConditionGrade conditionGrade, Long startingPrice, Long instantPrice,
+                       Integer instantBuyLockPercent,
                        Long reservePrice, Long minBidUnit, EndType endType,
                        Integer durationHours, Integer maxBidCount,
                        List<String> imageUrls) {
@@ -112,6 +118,7 @@ public class Product {
         this.conditionGrade = conditionGrade;
         this.startingPrice = startingPrice;
         this.instantPrice = instantPrice;
+        this.instantBuyLockPercent = instantBuyLockPercent;
         this.reservePrice = reservePrice;
         this.minBidUnit = minBidUnit;
         this.endType = endType;

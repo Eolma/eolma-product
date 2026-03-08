@@ -23,6 +23,7 @@ public class RegisterProductUseCase {
                 .conditionGrade(request.conditionGrade())
                 .startingPrice(request.startingPrice())
                 .instantPrice(request.instantPrice())
+                .instantBuyLockPercent(request.instantBuyLockPercent())
                 .reservePrice(request.reservePrice())
                 .minBidUnit(request.minBidUnit())
                 .endType(request.endType())

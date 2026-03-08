@@ -25,6 +25,7 @@ public class UpdateProductUseCase {
                 request.conditionGrade(),
                 request.startingPrice(),
                 request.instantPrice(),
+                request.instantBuyLockPercent(),
                 request.reservePrice(),
                 request.minBidUnit(),
                 request.endType(),
