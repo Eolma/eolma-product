@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS product (
     id              BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    seller_id       VARCHAR(36) NOT NULL,
+    seller_id       VARCHAR(13) NOT NULL,
     title           VARCHAR(200) NOT NULL,
     description     TEXT,
     category        VARCHAR(50) NOT NULL,
@@ -25,6 +25,6 @@ CREATE INDEX IF NOT EXISTS idx_product_category_status ON product(category, stat
 CREATE INDEX IF NOT EXISTS idx_product_created ON product(created_at DESC);
 
 CREATE TABLE IF NOT EXISTS processed_event (
-    event_id     VARCHAR(36) PRIMARY KEY,
+    event_id     VARCHAR(13) PRIMARY KEY,
     processed_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
